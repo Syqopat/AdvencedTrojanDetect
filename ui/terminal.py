@@ -19,7 +19,7 @@ BANNER = """
      ██║   ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║ ╚████║███████║███████╗██║ ╚████║   ██║   ██║██║ ╚████║███████╗███████╗
      ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
  [/bold cyan]
- [bold yellow]         >>> ADVANCED TROJAN, INFOSTEALER & REVERSE FORENSIC ENGINE v2.0 <<<[/bold yellow]
+ [bold yellow]         >>> ADVANCED TROJAN & PERSISTENCE FORENSIC SYSTEM v1.0.0 <<<[/bold yellow]
  [bold magenta]                 [ Cyber Threat Intelligence & Deep Malware Auditor ] [/bold magenta]
 """
 

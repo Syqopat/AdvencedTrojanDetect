@@ -1,11 +1,11 @@
-# 🛡️ TrojanSentinel (AdvencedTrojanDetect) v3.0
+# 🛡️ TrojanSentinel (AdvencedTrojanDetect) v1.0.0
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg)](https://www.microsoft.com/windows)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Security Audit](https://img.shields.io/badge/audit-Discord%20%7C%20UAC%20%7C%20Backdoors-red.svg)](#features)
+[![Security Audit](https://img.shields.io/badge/audit-Forensics%20%26%20Malware-red.svg)](#features)
 
-**TrojanSentinel** is an advanced Windows threat intelligence, persistence auditor, and malware detection suite. It audits low-level kernel endpoints, Discord client JS token stealer injections, UAC bypass registry hijacks, C2 backdoor sockets, WMI persistence, and Authenticode Digital Signatures.
+**TrojanSentinel** is an advanced Windows threat intelligence, persistence auditor, and malware detection suite. It audits low-level kernel endpoints, Discord client JS token stealer injections, UAC bypass registry hijacks, C2 backdoor sockets, WMI persistence, and Authenticode Digital Signatures with an intelligent Whitelisting engine eliminating false positives.
 
 ---
 
@@ -13,7 +13,9 @@
 
 - **Discord & Discord Canary Injection Audit:** Inspects `discord_desktop_core` modules across Discord, Discord Canary, Discord PTB, and Discord Development clients for malicious token stealer JavaScript injections, obfuscated `eval()` blocks, and exfiltration webhooks.
 - **UAC Bypass Hijack Detector:** Identifies user-mode UAC elevation bypass hijacks including `ms-settings` (FODHelper/ComputerDefaults), `mscfile` (EventVwr), `CLSID` COM hijacks, and `UserInitMprLogonScript` overrides.
-- **Backdoor & Reverse Shell Scanner:** Detects unauthorized listening C2 ports (e.g. 4444, 5555, 1337, 31337), RAT signatures (AsyncRAT, NjRAT, Quasar, Remcos, Warzone, Venom, XWorm), and reverse shell process trees.
+- **Backdoor & Reverse Shell Scanner:** Detects unauthorized listening C2 ports (e.g. 4444, 5555, 1337, 31337) and RAT signatures (AsyncRAT, NjRAT, Quasar, Remcos, Warzone, Venom, XWorm) while ignoring legitimate loopback & HTTPS sockets.
+- **Zero False Positive Whitelist Engine:** Whitelists legitimate games (Roblox, Riot/Valorant, Steam, Minecraft, Epic), media tools (Spotify, Discord), CAD software (SOLIDWORKS), and development environments (VSCode, Antigravity, Ollama, Tailscale).
+- **Crypto Clipper & Wallet Auditor:** Detects crypto address swapping malware hooks and verifies browser extension wallet integrity (MetaMask, Phantom, Coinbase, Trust Wallet).
 - **Task Scheduler Persistence Audit:** Filters out native `\Microsoft\` tasks to isolate third-party or rogue scheduled tasks, executable triggers, and periodic repetition mechanics.
 - **Auto-Run Registry & Winlogon Inspector:** Audits `HKCU` and `HKLM` `Run`, `RunOnce`, `WOW6432Node`, `Winlogon` `Shell` & `Userinit` hijacks, `AppInit_DLLs`, and `WMI Event Consumers` (`root\subscription`).
 - **Active Processes & Code Signature Verification:** Validates Authenticode digital signatures (`Get-AuthenticodeSignature`), isolates unsigned processes running from user directories (`%APPDATA%`, `%TEMP%`, `%PROGRAMDATA%`), and detects DLL side-loading.
@@ -37,9 +39,14 @@ AdvencedTrojanDetect/
 ├── core/                    # Security Audit Engines
 │   ├── __init__.py
 │   ├── ps_runner.py          # PowerShell Execution Bridge
+│   ├── white_list.py         # Whitelisting & False Positive Engine
 │   ├── discord_injector.py   # Discord & Canary JS Injection Engine
 │   ├── uac_checker.py        # UAC Bypass Registry Hijack Auditor
 │   ├── backdoor_detector.py  # C2 Backdoor & RAT Scanner
+│   ├── clipper_auditor.py    # Crypto Clipper & Address Swapper Auditor
+│   ├── browser_auditor.py    # Browser Extension & WebRequest Engine
+│   ├── wallet_auditor.py     # Crypto Wallet Integrity Auditor
+│   ├── stealer_defense.py    # Stealer Token Storage Analyzer
 │   ├── task_scheduler.py     # Task Scheduler Forensic Engine
 │   ├── persistence.py        # Registry, Winlogon & WMI Audit
 │   ├── process_analyzer.py   # Process & Authenticode Verifier
@@ -73,26 +80,6 @@ AdvencedTrojanDetect/
    ```bash
    py main.py
    ```
-
----
-
-## 💻 Interactive Terminal Options
-
-| Option | Audit Engine | Target Scope |
-| :---: | :--- | :--- |
-| **1** | **Full System Forensic Scan** | Executes all 9 audit engines simultaneously |
-| **2** | **Discord & Canary Injection Audit** | Inspects `desktop_core` `index.js` files |
-| **3** | **UAC Bypass Hijack Audit** | Audits `ms-settings`, `mscfile`, `UserInit` |
-| **4** | **Backdoor & Reverse Shell Scan** | Scans C2 listening ports and RAT signatures |
-| **5** | **Task Scheduler Audit** | Scans scheduled tasks outside `\Microsoft\` |
-| **6** | **Startup & Registry Keys Audit** | Audits `Run`, `RunOnce`, `Winlogon`, `WMI` |
-| **7** | **Active Processes & Signatures** | Verifies Authenticode digital signatures |
-| **8** | **Critical Directories Scan** | Scans `ProgramData` and `%TEMP%` executables |
-| **9** | **Network Ports & Proxy Hijacks** | Checks sockets, PIDs, `hosts` file & Proxy |
-| **10** | **Defender History & QuickScan** | Retrieves threat logs & triggers Defender |
-| **11** | **Generate Cleanup Script** | Builds one-click administrative `.bat` script |
-| **12** | **Export Audit Reports** | Generates JSON & Markdown reports |
-| **0** | **Exit** | Closes TrojanSentinel |
 
 ---
 
