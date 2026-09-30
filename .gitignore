@@ -1,0 +1,8 @@
+build/
+dist/
+__pycache__/
+*.pyc
+*.spec
+audit_results.json
+trojan_sentinel_report.json
+trojan_sentinel_report.md
