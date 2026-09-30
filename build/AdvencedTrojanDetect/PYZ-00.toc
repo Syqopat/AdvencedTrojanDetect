@@ -616,6 +616,10 @@
    'C:\\Users\\kuzey\\Desktop\\MY '
    'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\wallet_auditor.py',
    'PYMODULE'),
+  ('core.white_list',
+   'C:\\Users\\kuzey\\Desktop\\MY '
+   'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\white_list.py',
+   'PYMODULE'),
   ('csv',
    'C:\\Users\\kuzey\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\csv.py',
    'PYMODULE'),

@@ -1,4 +1,5 @@
 from core.ps_runner import run_ps_json
+from core.white_list import is_whitelisted_process
 
 def audit_processes():
     script = """
@@ -32,4 +33,14 @@ def audit_processes():
     items = run_ps_json(script)
     if isinstance(items, dict):
         items = [items]
-    return items
+
+    filtered_items = []
+    for item in items:
+        p_name = item.get("ProcessName", "")
+        p_path = item.get("Path", "")
+        if is_whitelisted_process(p_name, p_path):
+            item["IsSuspicious"] = False
+            item["IsSuspiciousPath"] = False
+        filtered_items.append(item)
+
+    return filtered_items
