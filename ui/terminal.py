@@ -19,36 +19,39 @@ BANNER = """
      ██║   ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║ ╚████║███████║███████╗██║ ╚████║   ██║   ██║██║ ╚████║███████╗███████╗
      ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
  [/bold cyan]
- [bold yellow]         >>> ADVANCED TROJAN & PERSISTENCE DETECTION SYSTEM v2.5 <<<[/bold yellow]
+ [bold yellow]         >>> ADVANCED TROJAN, DISCORD INJECTION & UAC AUDITOR v3.0 <<<[/bold yellow]
  [bold magenta]                 [ Cyber Threat Intelligence & Forensic Analyzer ] [/bold magenta]
 """
 
 def show_banner():
     console.clear()
     console.print(Align.center(Text.from_markup(BANNER)))
-    console.print(Align.center("[bold white on blue] WINDOWS KERNEL & PERSISTENCE SECURITY AUDITOR [/bold white on blue]\n"))
+    console.print(Align.center("[bold white on blue] WINDOWS FORENSICS | DISCORD INJECTION | UAC BYPASS | BACKDOOR ENGINE [/bold white on blue]\n"))
 
 def show_menu():
-    table = Table(title="[bold cyan]SYSTEM AUDIT CONTROLS[/bold cyan]", show_header=True, header_style="bold underline magenta", expand=True)
+    table = Table(title="[bold cyan]SYSTEM AUDIT & ADVANCED THREAT CONTROLS[/bold cyan]", show_header=True, header_style="bold underline magenta", expand=True)
     table.add_column("Option", style="bold yellow", justify="center", width=8)
     table.add_column("Audit Module Description", style="bold white")
     table.add_column("Scope / Target", style="cyan")
 
-    table.add_row("1", "Full Deep Security Scan (All 6 Modules)", "Complete System Audit")
-    table.add_row("2", "Task Scheduler Persistence Audit", "Get-ScheduledTask / Triggers")
-    table.add_row("3", "Startup & Registry Keys Audit", "Run, RunOnce, Winlogon, WMI")
-    table.add_row("4", "Active Processes & Code Signatures", "Authenticode, AppData / Temp")
-    table.add_row("5", "Critical Directories & Hidden Executables", "ProgramData / Temp Files")
-    table.add_row("6", "Network Ports & Backdoor Hijack Scan", "TCP Connections, Hosts, Proxy")
-    table.add_row("7", "Defender History & Trigger Quick Scan", "Get-MpThreatDetection / Scan")
-    table.add_row("8", "Generate Desktop One-Click Cleanup Script", "Build Administrative .bat")
-    table.add_row("9", "Export Audit Report (JSON & Markdown)", "Save Local Artifacts")
-    table.add_row("0", "Exit System", "Terminate Application")
+    table.add_row("1", "Full Deep Security Scan (All 9 Modules)", "Complete System & RAT Audit")
+    table.add_row("2", "Discord & Canary Injection Audit", "Inspect desktop_core index.js")
+    table.add_row("3", "UAC Bypass Hijack Audit", "ms-settings, mscfile, UserInit")
+    table.add_row("4", "Backdoor & Reverse Shell Scan", "Listening Ports, RAT Signatures")
+    table.add_row("5", "Task Scheduler Persistence Audit", "Get-ScheduledTask / Triggers")
+    table.add_row("6", "Startup & Registry Keys Audit", "Run, RunOnce, Winlogon, WMI")
+    table.add_row("7", "Active Processes & Code Signatures", "Authenticode, AppData / Temp")
+    table.add_row("8", "Critical Directories & Temp Scan", "ProgramData / Temp Executables")
+    table.add_row("9", "Network Ports & Proxy Hijack Scan", "TCP Connections, Hosts, Proxy")
+    table.add_row("10", "Defender Threat Log & QuickScan", "Get-MpThreatDetection / Scan")
+    table.add_row("11", "Generate Desktop One-Click Cleanup Script", "Build Administrative .bat")
+    table.add_row("12", "Export Audit Report (JSON & Markdown)", "Save Local Artifacts")
+    table.add_row("0", "Exit System", "Terminate TrojanSentinel")
 
     console.print(table)
     console.print()
 
-def simulate_progress(task_name: str, duration: float = 1.0):
+def simulate_progress(task_name: str, duration: float = 0.8):
     with Progress(
         SpinnerColumn("dots", style="bold cyan"),
         TextColumn("[bold green]{task.description}"),
@@ -72,7 +75,7 @@ def print_findings_table(title: str, items: list, headers: list, keys: list):
     
     for item in items:
         row = []
-        is_sus = item.get("IsSuspicious", False) or item.get("IsSuspiciousPath", False)
+        is_sus = item.get("IsSuspicious", False) or item.get("IsSuspiciousPath", False) or item.get("IsInjected", False) or item.get("IsBypassed", False)
         style = "bold red" if is_sus else "white"
         for k in keys:
             val = str(item.get(k, "N/A"))

@@ -24,10 +24,11 @@ def generate_cleanup_script(findings, output_path=None):
     ]
 
     for item in findings.get("suspicious_processes", []):
-        pid = item.get("Id")
+        pid = item.get("Id") or item.get("PID")
         pname = item.get("ProcessName")
-        lines.append(f"echo [*] Terminating suspicious process {pname} (PID: {pid})...")
-        lines.append(f"taskkill /F /PID {pid} 2>nul")
+        if pid and pname:
+            lines.append(f"echo [*] Terminating suspicious process {pname} (PID: {pid})...")
+            lines.append(f"taskkill /F /PID {pid} 2>nul")
 
     for item in findings.get("suspicious_registry", []):
         rpath = item.get("RegistryPath", "").replace("HKCU:", "HKCU").replace("HKLM:", "HKLM")
@@ -35,19 +36,33 @@ def generate_cleanup_script(findings, output_path=None):
         lines.append(f"echo [*] Removing Registry Persistence Key: {vname}...")
         lines.append(f'reg delete "{rpath}" /v "{vname}" /f 2>nul')
 
+    for item in findings.get("uac_bypasses", []):
+        if item.get("IsBypassed") and "System UAC" not in item.get("BypassTechnique", ""):
+            rpath = item.get("RegistryPath", "").replace("HKCU:", "HKCU").replace("HKLM:", "HKLM")
+            lines.append(f"echo [*] Cleaning UAC Bypass Hijack Key: {rpath}...")
+            lines.append(f'reg delete "{rpath}" /f 2>nul')
+
+    for item in findings.get("discord_injections", []):
+        if item.get("IsInjected"):
+            fpath = item.get("FilePath", "")
+            lines.append(f"echo [*] Repairing Injected Discord Desktop Core: {fpath}...")
+            lines.append(f'echo module.exports = require(\'./core.asar\'); > "{fpath}"')
+
     for item in findings.get("suspicious_tasks", []):
         tname = item.get("TaskName", "")
-        lines.append(f"echo [*] Unregistering Suspicious Scheduled Task: {tname}...")
-        lines.append(f'schtasks /delete /tn "{tname}" /f 2>nul')
+        if tname:
+            lines.append(f"echo [*] Unregistering Suspicious Scheduled Task: {tname}...")
+            lines.append(f'schtasks /delete /tn "{tname}" /f 2>nul')
 
     for item in findings.get("suspicious_files", []):
         fpath = item.get("FullPath", "")
-        lines.append(f"echo [*] Quarantining File: {fpath}...")
-        lines.append(f'if exist "{fpath}" (')
-        lines.append(f'    attrib -h -s -r "{fpath}"')
-        lines.append(f'    ren "{fpath}" "*.quarantine" 2>nul')
-        lines.append(f'    echo [+] Quarantined: {fpath}')
-        lines.append(")")
+        if fpath:
+            lines.append(f"echo [*] Quarantining File: {fpath}...")
+            lines.append(f'if exist "{fpath}" (')
+            lines.append(f'    attrib -h -s -r "{fpath}"')
+            lines.append(f'    ren "{fpath}" "*.quarantine" 2>nul')
+            lines.append(f'    echo [+] Quarantined: {fpath}')
+            lines.append(")")
 
     lines.extend([
         "echo.",
