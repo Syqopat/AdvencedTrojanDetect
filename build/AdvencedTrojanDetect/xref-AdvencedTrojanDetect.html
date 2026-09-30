@@ -25,7 +25,9 @@ imports:
  &#8226;   <a href="#collections">collections</a>
  &#8226;   <a href="#copyreg">copyreg</a>
  &#8226;   <a href="#core.backdoor_detector">core.backdoor_detector</a>
+ &#8226;   <a href="#core.browser_auditor">core.browser_auditor</a>
  &#8226;   <a href="#core.cleanup_generator">core.cleanup_generator</a>
+ &#8226;   <a href="#core.clipper_auditor">core.clipper_auditor</a>
  &#8226;   <a href="#core.defender_history">core.defender_history</a>
  &#8226;   <a href="#core.directory_inspector">core.directory_inspector</a>
  &#8226;   <a href="#core.discord_injector">core.discord_injector</a>
@@ -35,6 +37,7 @@ imports:
  &#8226;   <a href="#core.report_generator">core.report_generator</a>
  &#8226;   <a href="#core.task_scheduler">core.task_scheduler</a>
  &#8226;   <a href="#core.uac_checker">core.uac_checker</a>
+ &#8226;   <a href="#core.wallet_auditor">core.wallet_auditor</a>
  &#8226;   <a href="#encodings">encodings</a>
  &#8226;   <a href="#encodings._win_cp_codecs">encodings._win_cp_codecs</a>
  &#8226;   <a href="#encodings.aliases">encodings.aliases</a>
@@ -6947,7 +6950,9 @@ imported by:
 <span class="moduletype">Package</span>  <div class="import">
 imported by:
     <a href="#core.backdoor_detector">core.backdoor_detector</a>
+ &#8226;   <a href="#core.browser_auditor">core.browser_auditor</a>
  &#8226;   <a href="#core.cleanup_generator">core.cleanup_generator</a>
+ &#8226;   <a href="#core.clipper_auditor">core.clipper_auditor</a>
  &#8226;   <a href="#core.defender_history">core.defender_history</a>
  &#8226;   <a href="#core.directory_inspector">core.directory_inspector</a>
  &#8226;   <a href="#core.discord_injector">core.discord_injector</a>
@@ -6958,6 +6963,7 @@ imported by:
  &#8226;   <a href="#core.report_generator">core.report_generator</a>
  &#8226;   <a href="#core.task_scheduler">core.task_scheduler</a>
  &#8226;   <a href="#core.uac_checker">core.uac_checker</a>
+ &#8226;   <a href="#core.wallet_auditor">core.wallet_auditor</a>
 
   </div>
 
@@ -6981,12 +6987,48 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="core.browser_auditor"></a>
+  <a target="code" href="///C:/Users/kuzey/Desktop/MY%20PROJECTS/SOFTWARE/TOOL/AdvencedTrojanDetect/core/browser_auditor.py" type="text/plain"><tt>core.browser_auditor</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#core">core</a>
+ &#8226;   <a href="#glob">glob</a>
+ &#8226;   <a href="#json">json</a>
+ &#8226;   <a href="#os">os</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="core.cleanup_generator"></a>
   <a target="code" href="///C:/Users/kuzey/Desktop/MY%20PROJECTS/SOFTWARE/TOOL/AdvencedTrojanDetect/core/cleanup_generator.py" type="text/plain"><tt>core.cleanup_generator</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#core">core</a>
  &#8226;   <a href="#os">os</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="core.clipper_auditor"></a>
+  <a target="code" href="///C:/Users/kuzey/Desktop/MY%20PROJECTS/SOFTWARE/TOOL/AdvencedTrojanDetect/core/clipper_auditor.py" type="text/plain"><tt>core.clipper_auditor</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#core">core</a>
+ &#8226;   <a href="#core.ps_runner">core.ps_runner</a>
 
   </div>
   <div class="import">
@@ -7114,6 +7156,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#core.backdoor_detector">core.backdoor_detector</a>
+ &#8226;   <a href="#core.clipper_auditor">core.clipper_auditor</a>
  &#8226;   <a href="#core.defender_history">core.defender_history</a>
  &#8226;   <a href="#core.directory_inspector">core.directory_inspector</a>
  &#8226;   <a href="#core.network_checker">core.network_checker</a>
@@ -7169,6 +7212,24 @@ imported by:
 imports:
     <a href="#core">core</a>
  &#8226;   <a href="#core.ps_runner">core.ps_runner</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#main.py">main.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="core.wallet_auditor"></a>
+  <a target="code" href="///C:/Users/kuzey/Desktop/MY%20PROJECTS/SOFTWARE/TOOL/AdvencedTrojanDetect/core/wallet_auditor.py" type="text/plain"><tt>core.wallet_auditor</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#core">core</a>
+ &#8226;   <a href="#glob">glob</a>
+ &#8226;   <a href="#os">os</a>
 
   </div>
   <div class="import">
@@ -10929,7 +10990,9 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#core.discord_injector">core.discord_injector</a>
+    <a href="#core.browser_auditor">core.browser_auditor</a>
+ &#8226;   <a href="#core.discord_injector">core.discord_injector</a>
+ &#8226;   <a href="#core.wallet_auditor">core.wallet_auditor</a>
  &#8226;   <a href="#pathlib">pathlib</a>
  &#8226;   <a href="#pdb">pdb</a>
  &#8226;   <a href="#pygments.lexers._php_builtins">pygments.lexers._php_builtins</a>
@@ -12060,6 +12123,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#charset_normalizer.models">charset_normalizer.models</a>
+ &#8226;   <a href="#core.browser_auditor">core.browser_auditor</a>
  &#8226;   <a href="#core.ps_runner">core.ps_runner</a>
  &#8226;   <a href="#core.report_generator">core.report_generator</a>
  &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
@@ -21491,9 +21555,11 @@ imported by:
  &#8226;   <a href="#concurrent.futures.thread">concurrent.futures.thread</a>
  &#8226;   <a href="#configparser">configparser</a>
  &#8226;   <a href="#contextlib">contextlib</a>
+ &#8226;   <a href="#core.browser_auditor">core.browser_auditor</a>
  &#8226;   <a href="#core.cleanup_generator">core.cleanup_generator</a>
  &#8226;   <a href="#core.discord_injector">core.discord_injector</a>
  &#8226;   <a href="#core.report_generator">core.report_generator</a>
+ &#8226;   <a href="#core.wallet_auditor">core.wallet_auditor</a>
  &#8226;   <a href="#ctypes">ctypes</a>
  &#8226;   <a href="#doctest">doctest</a>
  &#8226;   <a href="#email.utils">email.utils</a>

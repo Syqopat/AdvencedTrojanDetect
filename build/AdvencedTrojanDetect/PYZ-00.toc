@@ -560,9 +560,17 @@
    'C:\\Users\\kuzey\\Desktop\\MY '
    'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\backdoor_detector.py',
    'PYMODULE'),
+  ('core.browser_auditor',
+   'C:\\Users\\kuzey\\Desktop\\MY '
+   'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\browser_auditor.py',
+   'PYMODULE'),
   ('core.cleanup_generator',
    'C:\\Users\\kuzey\\Desktop\\MY '
    'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\cleanup_generator.py',
+   'PYMODULE'),
+  ('core.clipper_auditor',
+   'C:\\Users\\kuzey\\Desktop\\MY '
+   'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\clipper_auditor.py',
    'PYMODULE'),
   ('core.defender_history',
    'C:\\Users\\kuzey\\Desktop\\MY '
@@ -603,6 +611,10 @@
   ('core.uac_checker',
    'C:\\Users\\kuzey\\Desktop\\MY '
    'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\uac_checker.py',
+   'PYMODULE'),
+  ('core.wallet_auditor',
+   'C:\\Users\\kuzey\\Desktop\\MY '
+   'PROJECTS\\SOFTWARE\\TOOL\\AdvencedTrojanDetect\\core\\wallet_auditor.py',
    'PYMODULE'),
   ('csv',
    'C:\\Users\\kuzey\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\csv.py',
