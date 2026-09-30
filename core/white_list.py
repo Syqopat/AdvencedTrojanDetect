@@ -7,7 +7,9 @@ KNOWN_LEGIT_PROCESSES = {
     "bluestackshelper.exe", "sldworks.exe", "discord.exe", "discordcanary.exe", "discordptb.exe",
     "spotify.exe", "ollama.exe", "tailscale.exe", "chrome.exe", "msedge.exe", "firefox.exe",
     "brave.exe", "opera.exe", "vivaldi.exe", "antigravity.exe", "antigravity ide.exe", "python.exe",
-    "code.exe", "git.exe", "bash.exe", "rtkauduserveice64.exe", "lghub_system_tray.exe"
+    "code.exe", "git.exe", "bash.exe", "rtkauduserveice64.exe", "lghub_system_tray.exe",
+    "claude.exe", "curseforge.exe", "curse.agent.host.exe", "language_server.exe",
+    "opencode-cli.exe", "zcode.exe", "node.exe", "electron.exe"
 }
 
 KNOWN_LEGIT_PATHS = [
@@ -27,27 +29,14 @@ def is_whitelisted_process(p_name: str, p_path: str) -> bool:
         name_lower += ".exe"
         
     if name_lower in KNOWN_LEGIT_PROCESSES:
-        if p_path:
-            path_lower = p_path.strip().lower()
-            for legit_dir in KNOWN_LEGIT_PATHS:
-                if path_lower.startswith(legit_dir):
-                    return True
-            if "appdata\\local\\programs" in path_lower or "appdata\\local\\discord" in path_lower or "appdata\\local\\roblox" in path_lower:
+        return True
+
+    if p_path:
+        path_lower = p_path.strip().lower()
+        for legit_dir in KNOWN_LEGIT_PATHS:
+            if path_lower.startswith(legit_dir):
                 return True
-        else:
+        if "appdata\\local\\programs" in path_lower or "appdata\\local\\discord" in path_lower or "appdata\\local\\roblox" in path_lower or "appdata\\local\\openclaw" in path_lower:
             return True
 
     return False
-
-def filter_false_positives(items: list, path_key="Path", name_key="ProcessName") -> list:
-    filtered = []
-    for item in items:
-        p_path = item.get(path_key, "") or item.get("FullPath", "") or item.get("ValueData", "")
-        p_name = item.get(name_key, "") or item.get("FileName", "") or item.get("ValueName", "")
-        
-        if is_whitelisted_process(p_name, p_path):
-            item["IsSuspicious"] = False
-            item["IsSuspiciousPath"] = False
-        
-        filtered.append(item)
-    return filtered
